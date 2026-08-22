@@ -17,6 +17,7 @@ import EventsPreview from './components/EventsPreview.jsx'
 import ComingSoon from './components/ComingSoon.jsx'
 import YearlySchedule from './components/YearlySchedule.jsx'
 import ScheduleStrip from './components/ScheduleStrip.jsx'
+import AdmissionSteps from './components/AdmissionSteps.jsx'
 import HomeCTA from './components/HomeCTA.jsx'
 import Footer from './components/Footer.jsx'
 import WhatsAppButton from './components/WhatsAppButton.jsx'
@@ -43,7 +44,7 @@ export default function App() {
         <main>
           {tab === 'home' && (
             <>
-              <Hero />
+              <Hero onNavigate={setTab} />
               <About />
               <ContactCurriculum />
               <CurriculumPreview onNavigate={setTab} />
@@ -52,6 +53,7 @@ export default function App() {
               <EventsPreview onNavigate={setTab} />
               <ScheduleStrip onNavigate={setTab} />
               <Branches onNavigate={setTab} />
+              <AdmissionSteps onNavigate={setTab} />
               <HomeCTA onNavigate={setTab} />
             </>
           )}

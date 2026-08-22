@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react'
 import { GALLERY_IMAGES } from '../data.js'
 
+/*
+ * The home page shows a short preview only. Loading all 39 full-size photos
+ * here cost the visitor tens of megabytes before they had scrolled anywhere;
+ * the complete set still lives on the Gallery page.
+ */
+const PREVIEW = GALLERY_IMAGES.slice(0, 12)
+
 export default function Gallery() {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
@@ -8,13 +15,13 @@ export default function Gallery() {
   useEffect(() => {
     if (paused) return
     const id = setInterval(() => {
-      setIndex((i) => (i + 1) % GALLERY_IMAGES.length)
+      setIndex((i) => (i + 1) % PREVIEW.length)
     }, 4000)
     return () => clearInterval(id)
   }, [paused])
 
   const go = (dir) => {
-    setIndex((i) => (i + dir + GALLERY_IMAGES.length) % GALLERY_IMAGES.length)
+    setIndex((i) => (i + dir + PREVIEW.length) % PREVIEW.length)
   }
 
   return (
@@ -38,12 +45,15 @@ export default function Gallery() {
         </button>
 
         <div className="gallery__frame">
-          {GALLERY_IMAGES.map((src, i) => (
+          {PREVIEW.map((src, i) => (
             <img
               key={src}
               src={src}
               alt={`The Arqam Schools campus ${i + 1}`}
               className={`gallery__img ${i === index ? 'gallery__img--active' : ''}`}
+              /* Fetch the visible slide and the one after it; defer the rest. */
+              loading={i <= index + 1 ? 'eager' : 'lazy'}
+              decoding="async"
             />
           ))}
         </div>
@@ -54,14 +64,14 @@ export default function Gallery() {
       </div>
 
       <div className="gallery__thumbs">
-        {GALLERY_IMAGES.map((src, i) => (
+        {PREVIEW.map((src, i) => (
           <button
             key={src}
             className={`gallery__thumb ${i === index ? 'gallery__thumb--active' : ''}`}
             onClick={() => setIndex(i)}
             aria-label={`Go to image ${i + 1}`}
           >
-            <img src={src} alt="" />
+            <img src={src} alt="" loading="lazy" decoding="async" />
           </button>
         ))}
       </div>
