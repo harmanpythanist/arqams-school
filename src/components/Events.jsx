@@ -5,7 +5,7 @@ export const EVENTS = [
     id: 'new-year',
     title: 'New Year',
     date: 'January 1',
-    image: '/events/new-year.png',
+    image: '/events/new-year.jpg',
     description:
       'We welcome the new year with a special morning assembly, students sharing their resolutions, and fun classroom activities to kick off the academic year on a positive note.',
   },
@@ -13,7 +13,7 @@ export const EVENTS = [
     id: 'earth-day',
     title: 'Earth Day',
     date: 'February 23',
-    image: '/events/earth-day.png',
+    image: '/events/earth-day.jpg',
     description:
       'Students take part in tree plantation drives, cleanliness campaigns, and awareness sessions to celebrate our planet and learn about caring for the environment.',
   },
@@ -21,7 +21,7 @@ export const EVENTS = [
     id: 'speech-competition',
     title: 'Speech Competition',
     date: 'March 4',
-    image: '/events/speech-competition.png',
+    image: '/events/speech-competition.jpg',
     description:
       'A stage for our students to build confidence and public-speaking skills, with participants from every class competing on thoughtfully chosen topics.',
   },
@@ -29,7 +29,7 @@ export const EVENTS = [
     id: 'workers-day',
     title: 'Workers Day',
     date: 'April 1',
-    image: '/events/workers-day.png',
+    image: '/events/workers-day.jpg',
     description:
       'A day dedicated to honoring the hard work and dedication of our support staff and workers, with a small ceremony of appreciation and thanks.',
   },
@@ -37,7 +37,7 @@ export const EVENTS = [
     id: 'environment-day',
     title: 'Environment Day',
     date: 'June 5',
-    image: '/events/environment-day.png',
+    image: '/events/environment-day.jpg',
     description:
       'Students engage in eco-friendly activities, poster-making, and short presentations to build awareness around pollution, recycling, and protecting our surroundings.',
   },
@@ -45,7 +45,7 @@ export const EVENTS = [
     id: 'independence-day',
     title: 'Independence Day',
     date: 'August 14',
-    image: '/events/independence-day.png',
+    image: '/events/independence-day.jpg',
     description:
       'A patriotic celebration filled with tableaus, national songs, flag hoisting, and activities that honor the spirit of Pakistan\u2019s independence.',
   },
@@ -53,7 +53,7 @@ export const EVENTS = [
     id: 'sports-day',
     title: 'Sports Day',
     date: 'September 15',
-    image: '/events/sports-day.png',
+    image: '/events/sports-day.jpg',
     description:
       'An energetic day of races, team games, and friendly competition that encourages fitness, teamwork, and sportsmanship among all students.',
   },
@@ -61,7 +61,7 @@ export const EVENTS = [
     id: 'naat-competition',
     title: 'Naat Competition',
     date: 'October 3',
-    image: '/events/naat-competition.png',
+    image: '/events/naat-competition.jpg',
     description:
       'Students showcase their talent for reciting Naat in a peaceful and spiritually uplifting event that brings the whole school community together.',
   },
@@ -69,7 +69,7 @@ export const EVENTS = [
     id: 'colors-day',
     title: 'Colors Day',
     date: 'November 4',
-    image: '/events/colors-day.png',
+    image: '/events/colors-day.jpg',
     description:
       'A vibrant celebration of colors, creativity and togetherness, bringing energy and excitement across every campus.',
   },
@@ -77,7 +77,7 @@ export const EVENTS = [
     id: 'iqbal-day',
     title: 'Iqbal Day',
     date: 'November 9',
-    image: '/events/iqbal-day.png',
+    image: '/events/iqbal-day.jpg',
     description:
       'A tribute to the life and poetry of Allama Iqbal, marked with recitations, speeches, and discussions on his vision for the nation.',
   },
@@ -85,7 +85,7 @@ export const EVENTS = [
     id: 'funfare',
     title: 'Fun Fare',
     date: 'December 12',
-    image: '/events/funfare.png',
+    image: '/events/funfare.jpg',
     description:
       'A day full of games, rides, stalls and laughter \u2014 students and families come together for our annual Fun Fare celebration.',
   },
@@ -93,7 +93,7 @@ export const EVENTS = [
     id: 'quaid-day',
     title: 'Quaid Day',
     date: 'December 25',
-    image: '/events/quaid-day.png',
+    image: '/events/quaid-day.jpg',
     description:
       'We remember the life and leadership of Quaid-e-Azam Muhammad Ali Jinnah through speeches, tableaus, and a special assembly.',
   },
