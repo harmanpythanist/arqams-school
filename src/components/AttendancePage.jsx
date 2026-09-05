@@ -35,18 +35,24 @@ const STATUS = {
   H: { label: 'Holiday', cls: 'holiday' },
 }
 
-const LOG = [
-  { date: '29 Sep 2026', day: 'Tuesday', status: 'Present' },
-  { date: '28 Sep 2026', day: 'Monday', status: 'Present' },
-  { date: '27 Sep 2026', day: 'Sunday', status: 'Holiday' },
-  { date: '23 Sep 2026', day: 'Wednesday', status: 'Absent' },
-  { date: '22 Sep 2026', day: 'Tuesday', status: 'Present' },
-  { date: '15 Sep 2026', day: 'Tuesday', status: 'Leave' },
-  { date: '14 Sep 2026', day: 'Monday', status: 'Holiday' },
-  { date: '08 Sep 2026', day: 'Tuesday', status: 'Absent' },
+const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+const WEEKDAYS_FULL = [
+  'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday',
 ]
 
-const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+// The last eight days of the month, newest first, read straight off the
+// calendar above so the two can never disagree. `date % 7` lands on the right
+// weekday because the 1st is a Tuesday.
+const LOG = DAYS.map((code, i) => {
+  const date = i + 1
+  return {
+    date: `${String(date).padStart(2, '0')} Sep 2026`,
+    day: WEEKDAYS_FULL[date % 7],
+    status: STATUS[code].label,
+  }
+})
+  .slice(-8)
+  .reverse()
 
 const CLASSES = [
   'Play Group', 'Nursery', 'Prep',
