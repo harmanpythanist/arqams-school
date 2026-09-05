@@ -379,6 +379,35 @@ p {
   background: rgba(255, 255, 255, 0.14);
   color: var(--color-white);
 }
+.sidebar__group-label {
+  margin: 1.4rem 0 0.45rem;
+  padding: 0 1rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 1.2rem;
+}
+.sidebar__link--sub {
+  font-size: 0.94rem;
+  padding-left: 1.6rem;
+  position: relative;
+}
+.sidebar__link--sub::before {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  transform: translateY(-50%);
+  opacity: 0.65;
+}
+.sidebar__link--sub.sidebar__link--active::before { opacity: 1; }
 .sidebar__open-btn {
   display: flex;
   position: fixed;
@@ -1846,8 +1875,11 @@ p {
   color: var(--color-ink-soft);
 }
 
-/* --- Meet the teacher ------------------------------------- */
+/* --- Meet the teacher (shown above classes & subjects) ---- */
 .teacher-block {
+  margin-top: 0.4rem;
+}
+.classes-block {
   margin-top: 2.2rem;
   padding-top: 1.9rem;
   border-top: 1px solid var(--color-accent-soft);
@@ -2854,4 +2886,536 @@ p {
 @media (max-width: 560px) {
   .steps__cta { flex-direction: column; }
   .steps__cta .btn { width: 100%; }
+}
+
+/* ===========================================================
+   FOR PARENTS — Result & Attendance
+   Presentational only for now; no data is fetched anywhere.
+=========================================================== */
+.parent-page {
+  min-height: 100vh;
+  padding: 7rem 1.5rem 6rem;
+  background: var(--color-cream-dark);
+}
+.parent-page .section-head {
+  max-width: var(--container);
+  margin: 0 auto 2.6rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.parent-shell {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* --- Coming-soon notice ----------------------------------- */
+.parent-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1rem 1.2rem;
+  border-radius: 14px;
+  background: var(--color-primary-soft);
+  border: 1px solid rgba(227, 39, 45, 0.22);
+}
+.parent-notice__dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: 0.42rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(227, 39, 45, 0.16);
+}
+.parent-notice p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+}
+.parent-notice strong { color: var(--color-primary-text); }
+
+/* --- Lookup form ------------------------------------------ */
+.parent-lookup {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 1rem;
+  align-items: end;
+  background: var(--color-white);
+  border: 1px solid var(--color-accent-soft);
+  border-radius: 18px;
+  padding: 1.4rem 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+.parent-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+.parent-field label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+.parent-field input,
+.parent-field select {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  background: var(--color-cream);
+  border: 1px solid var(--color-accent-soft);
+  border-radius: 10px;
+  padding: 0.72rem 0.85rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.parent-field input:focus,
+.parent-field select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(227, 39, 45, 0.14);
+}
+.parent-lookup__btn {
+  padding: 0.78rem 1.6rem;
+  white-space: nowrap;
+}
+
+/* --- Card shell ------------------------------------------- */
+.report-card,
+.attendance-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-accent-soft);
+  border-radius: 20px;
+  padding: 1.9rem;
+  box-shadow: var(--shadow-card);
+}
+.parent-block-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary-text);
+  margin-bottom: 0.8rem;
+}
+
+.report-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.3rem;
+  border-bottom: 2px solid var(--color-primary);
+}
+.report-card__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.report-card__brand img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+.report-card__school {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-ink);
+  line-height: 1.2;
+}
+.report-card__exam {
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  margin-top: 0.15rem;
+}
+.report-card__status {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #14663f;
+  background: #e6f4ec;
+  border: 1px solid #b8dfc9;
+  border-radius: 999px;
+  padding: 0.42rem 0.95rem;
+}
+
+.report-card__student {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem 1.4rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--color-accent-soft);
+  margin-bottom: 1.6rem;
+}
+.report-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+.report-card__field-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+.report-card__field-value {
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+/* --- Tables ----------------------------------------------- */
+.parent-table__wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-accent-soft);
+  border-radius: 14px;
+}
+.parent-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+  min-width: 520px;
+}
+.parent-table th,
+.parent-table td {
+  text-align: left;
+  padding: 0.78rem 1rem;
+  border-bottom: 1px solid var(--color-accent-soft);
+}
+.parent-table thead th {
+  background: var(--color-sage);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+.parent-table tbody tr:nth-child(even) { background: var(--color-cream); }
+.parent-table tbody tr:hover { background: var(--color-primary-soft); }
+.parent-table tbody td { color: var(--color-ink); }
+.parent-table .num { text-align: right; }
+.parent-table tfoot th,
+.parent-table tfoot td {
+  background: var(--color-navy-soft);
+  font-weight: 700;
+  color: var(--color-ink);
+  border-bottom: none;
+}
+
+.grade-pill {
+  display: inline-block;
+  min-width: 40px;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.24rem 0.6rem;
+  border-radius: 999px;
+  background: var(--color-sage);
+  color: var(--color-ink);
+  border: 1px solid var(--color-accent-soft);
+}
+.grade-pill--aplus { background: #e6f4ec; border-color: #b8dfc9; color: #14663f; }
+.grade-pill--a { background: var(--color-navy-soft); border-color: #c9cbe8; color: var(--color-navy-dark); }
+.grade-pill--b { background: #fdf3e2; border-color: #edd7ab; color: #8a5b12; }
+
+/* --- Stat tiles ------------------------------------------- */
+.parent-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.6rem;
+}
+.parent-stats--six {
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+}
+.parent-stat {
+  background: var(--color-cream-dark);
+  border: 1px solid var(--color-accent-soft);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.parent-stat__value {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-primary-text);
+  line-height: 1.1;
+}
+.parent-stat__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+/* --- Remarks & signatures --------------------------------- */
+.report-card__remarks {
+  margin-top: 1.9rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--color-accent-soft);
+}
+.report-card__remarks p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+  max-width: 68ch;
+}
+.report-card__signs {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.4rem;
+  margin-top: 2.4rem;
+}
+.report-card__signs li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+.report-card__sign-line {
+  display: block;
+  height: 1px;
+  background: var(--color-accent-soft);
+}
+.report-card__foot {
+  margin-top: 1.9rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--color-accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.parent-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.86rem;
+  color: var(--color-ink-soft);
+}
+.parent-note__tick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-text);
+}
+.parent-note__tick svg { width: 13px; height: 13px; }
+.report-card__actions {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+.report-card__actions .btn {
+  padding: 0.68rem 1.4rem;
+  font-size: 0.9rem;
+}
+
+/* --- Attendance ------------------------------------------- */
+.attendance-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.3rem;
+  border-bottom: 2px solid var(--color-primary);
+}
+.attendance-card__name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-ink);
+}
+.attendance-card__meta {
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  margin-top: 0.2rem;
+}
+.attendance-card__month {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-navy-dark);
+  background: var(--color-navy-soft);
+  border: 1px solid #c9cbe8;
+  border-radius: 999px;
+  padding: 0.42rem 0.95rem;
+  white-space: nowrap;
+}
+
+.attendance-bar {
+  margin-top: 1.5rem;
+}
+.attendance-bar__track {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--color-cream-dark);
+  border: 1px solid var(--color-accent-soft);
+  overflow: hidden;
+}
+.attendance-bar__fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+}
+.attendance-bar__note {
+  margin-top: 0.6rem;
+  font-size: 0.86rem;
+  color: var(--color-ink-soft);
+}
+
+.attendance-month {
+  margin-top: 2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--color-accent-soft);
+}
+.attendance-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.attendance-grid__weekday {
+  text-align: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  padding-bottom: 0.2rem;
+}
+.attendance-day {
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  border: 1px solid var(--color-accent-soft);
+  background: var(--color-cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  transition: transform 0.2s ease;
+}
+.attendance-day:hover { transform: translateY(-2px); }
+.attendance-day--empty {
+  border: 1px dashed var(--color-accent-soft);
+  background: transparent;
+}
+.attendance-day__num {
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.attendance-day__code {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+.attendance-day--present {
+  background: #e6f4ec;
+  border-color: #b8dfc9;
+  color: #14663f;
+}
+.attendance-day--absent {
+  background: var(--color-primary-soft);
+  border-color: rgba(227, 39, 45, 0.3);
+  color: var(--color-primary-text);
+}
+.attendance-day--leave {
+  background: #fdf3e2;
+  border-color: #edd7ab;
+  color: #8a5b12;
+}
+.attendance-day--holiday {
+  background: var(--color-sage);
+  border-color: var(--color-accent-soft);
+  color: var(--color-ink-soft);
+}
+.attendance-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin-top: 1.1rem;
+  font-size: 0.83rem;
+  color: var(--color-ink-soft);
+}
+.attendance-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.attendance-legend__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 5px;
+  border: 1px solid var(--color-accent-soft);
+}
+.attendance-legend__swatch--present { background: #e6f4ec; border-color: #b8dfc9; }
+.attendance-legend__swatch--absent { background: var(--color-primary-soft); border-color: rgba(227, 39, 45, 0.3); }
+.attendance-legend__swatch--leave { background: #fdf3e2; border-color: #edd7ab; }
+.attendance-legend__swatch--holiday { background: var(--color-sage); }
+
+.attendance-log {
+  margin-top: 2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--color-accent-soft);
+}
+.status-pill {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.24rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-accent-soft);
+  background: var(--color-sage);
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+.status-pill--present { background: #e6f4ec; border-color: #b8dfc9; color: #14663f; }
+.status-pill--absent { background: var(--color-primary-soft); border-color: rgba(227, 39, 45, 0.3); color: var(--color-primary-text); }
+.status-pill--leave { background: #fdf3e2; border-color: #edd7ab; color: #8a5b12; }
+.status-pill--holiday { background: var(--color-sage); }
+
+@media (max-width: 860px) {
+  .parent-lookup { grid-template-columns: 1fr 1fr; }
+  .parent-lookup__btn { grid-column: 1 / -1; width: 100%; }
+}
+@media (max-width: 640px) {
+  .parent-page { padding: 6rem 1.1rem 4rem; }
+  .parent-lookup { grid-template-columns: 1fr; padding: 1.2rem; }
+  .report-card,
+  .attendance-card { padding: 1.2rem; }
+  .attendance-grid { gap: 0.35rem; }
+  .attendance-day { border-radius: 9px; }
+  .attendance-day__code { display: none; }
+  .report-card__foot { flex-direction: column; align-items: flex-start; }
+  .report-card__actions .btn { flex: 1 1 auto; }
 }

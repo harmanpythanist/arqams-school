@@ -9,6 +9,8 @@ import CampusesPreview from './components/CampusesPreview.jsx'
 import Gallery from './components/Gallery.jsx'
 import GalleryPage from './components/GalleryPage.jsx'
 import CurriculumPage from './components/CurriculumPage.jsx'
+import ResultPage from './components/ResultPage.jsx'
+import AttendancePage from './components/AttendancePage.jsx'
 import CampusPage from './components/CampusPage.jsx'
 import AdmissionPage from './components/AdmissionPage.jsx'
 import Branches from './components/Branches.jsx'
@@ -63,6 +65,8 @@ export default function App() {
           {tab === 'schedule' && <YearlySchedule />}
           {tab === 'gallery' && <GalleryPage />}
           {tab === 'curriculum' && <CurriculumPage />}
+          {tab === 'result' && <ResultPage />}
+          {tab === 'attendance' && <AttendancePage />}
         </main>
         <Footer onNavigate={setTab} />
       </div>

@@ -8,6 +8,11 @@ const LINKS = [
   { id: 'curriculum', label: 'Curriculum' },
 ]
 
+const PARENT_LINKS = [
+  { id: 'result', label: 'Result' },
+  { id: 'attendance', label: 'Attendance' },
+]
+
 export default function Sidebar({ active, onNavigate, open, onToggle }) {
   const handleClick = (id) => {
     onNavigate(id)
@@ -51,6 +56,17 @@ export default function Sidebar({ active, onNavigate, open, onToggle }) {
             <button
               key={link.id}
               className={`sidebar__link ${active === link.id ? 'sidebar__link--active' : ''}`}
+              onClick={() => handleClick(link.id)}
+            >
+              {link.label}
+            </button>
+          ))}
+
+          <p className="sidebar__group-label">For Parents</p>
+          {PARENT_LINKS.map((link) => (
+            <button
+              key={link.id}
+              className={`sidebar__link sidebar__link--sub ${active === link.id ? 'sidebar__link--active' : ''}`}
               onClick={() => handleClick(link.id)}
             >
               {link.label}

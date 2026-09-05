@@ -229,23 +229,6 @@ export default function CurriculumPage() {
           </div>
           <p className="stage-panel__blurb">{stage.blurb}</p>
 
-          <p className="stage-panel__label">Classes &amp; Subjects</p>
-          <div className="curriculum-classes">
-            {stage.classes.map((c) => (
-              <div className="curriculum-class" key={c.name}>
-                <h4>
-                  {c.name}
-                  {c.age && <span className="curriculum-class__age">{c.age}</span>}
-                </h4>
-                <div className="curriculum-class__subjects">
-                  {c.subjects.map((s) => (
-                    <span className="subject-chip" key={s}>{s}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
           <div className="teacher-block">
             <p className="stage-panel__label">Meet the Teacher</p>
             <div className="teacher-profile">
@@ -287,6 +270,25 @@ export default function CurriculumPage() {
                   ))}
                 </ul>
               </div>
+            </div>
+          </div>
+
+          <div className="classes-block">
+            <p className="stage-panel__label">Classes &amp; Subjects</p>
+            <div className="curriculum-classes">
+              {stage.classes.map((c) => (
+                <div className="curriculum-class" key={c.name}>
+                  <h4>
+                    {c.name}
+                    {c.age && <span className="curriculum-class__age">{c.age}</span>}
+                  </h4>
+                  <div className="curriculum-class__subjects">
+                    {c.subjects.map((s) => (
+                      <span className="subject-chip" key={s}>{s}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
